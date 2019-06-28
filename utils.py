@@ -21,7 +21,7 @@ def clean_message(content: str) -> str:
     :param content: Content to clean
     :return: Clean content
     """
-    return content.replace("`", "")
+    return content.replace("`", "").replace("*", "").replace("_", "")
 
 
 def get_time_string():

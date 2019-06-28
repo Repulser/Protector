@@ -16,7 +16,8 @@ class Moderate(Cog):
     async def on_message(self, message):
         if message.channel.name == self.bot.config['log_channel']:
             return
-        prediction = await ml.predict(message.content)  # Get prediction from API
+        content = utils.clean_message(message.content)
+        prediction = await ml.predict(content)  # Get prediction from API
         print(f'{message.content} - {prediction}')
         classification = prediction[0]
         score = prediction[1]
