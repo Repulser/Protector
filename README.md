@@ -24,6 +24,6 @@ No. Protector is meant to be used alongside staff members to aid them with the d
 - Making use of translate APIs in order to support multiple languages
 - Marking users who have previously sent harmful content
 - Allowing user input for training data
-- Furhter improvment to the data set
+- Further improvment to the data set
 - Many more helpful moderation features and automations
 - Configurability, stuff like server prefix and log channels
