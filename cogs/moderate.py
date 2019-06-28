@@ -10,5 +10,10 @@ class Moderate(Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     async def on_message(self, message):
-        print(ml.predict(message.content))
+        prediction = ml.predict(message.content)
+        if prediction[0] is 'notok':
+            if prediction[1] > 0.8:
+                await message.delete
+
