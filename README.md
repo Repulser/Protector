@@ -1,3 +1,5 @@
+![Banner](https://i.imgur.com/5nAFv4G.png)
+
 ## **What is Protector?**
 Protector is a Discord moderation bot aimed at assisting your staff members by providing tools for automatic moderation.
 
