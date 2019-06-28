@@ -14,6 +14,8 @@ class Moderate(Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.channel.name == self.bot.config['log_channel']:
+            return
         prediction = await ml.predict(message.content)  # Get prediction from API
         print(f'{message.content} - {prediction}')
         classification = prediction[0]
