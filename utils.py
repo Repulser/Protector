@@ -1,5 +1,8 @@
 import json
 from datetime import datetime
+import string
+
+printable = set(string.printable)
 
 
 def load_config() -> dict:
@@ -22,6 +25,15 @@ def clean_message(content: str) -> str:
     :return: Clean content
     """
     return content.replace("`", "").replace("*", "").replace("_", "")
+
+
+def ascii_filter(content: str) -> str:
+    """
+    Strips message from ascii.
+    :param content: Content to strip
+    :return: Stripped content
+    """
+    return ''.join(filter(lambda x: x in printable, content))
 
 
 def get_time_string():

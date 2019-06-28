@@ -16,7 +16,7 @@ class Moderate(Cog):
     async def on_message(self, message):
         if message.channel.name == self.bot.config['log_channel']:
             return
-        content = utils.clean_message(message.content)
+        content = utils.ascii_filter(utils.clean_message(message.content))
         prediction = await ml.predict(content)  # Get prediction from API
         print(f'{message.content} - {prediction}')
         classification = prediction[0]
@@ -25,6 +25,9 @@ class Moderate(Cog):
             if score > 0.8:  # Delete if score is good
                 await message.delete()
             await self.handle_message(message, score)
+        elif classification == "ok":
+            if score < 0.9:
+                await self.handle_message(message, 0)
 
     async def handle_message(self, message, score):
         channel = [c for c in message.guild.text_channels if c.name == self.bot.config['log_channel']]
