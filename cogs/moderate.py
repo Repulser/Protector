@@ -14,6 +14,8 @@ class Moderate(Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.author.bot:
+            return
         if message.channel.name == self.bot.config['log_channel']:
             return
         content = utils.ascii_filter(utils.clean_message(message.content))
