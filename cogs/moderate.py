@@ -12,8 +12,7 @@ class Moderate(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
+    async def handle_message(self, message):
         if message.author.bot:
             return
         if message.channel.name == self.bot.config['log_channel']:
@@ -26,12 +25,20 @@ class Moderate(Cog):
         if classification == 'notok':
             if score > 0.8:  # Delete if score is good
                 await message.delete()
-            await self.handle_message(message, score)
+            await self.send_log(message, score)
         elif classification == "ok":
             if score < 0.9:
-                await self.handle_message(message, 0)
+                await self.send_log(message, 0)
 
-    async def handle_message(self, message, score):
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        await self.handle_message(message)
+
+    @commands.Cog.listener()
+    async def on_message_edit(self, before, after):
+        await self.handle_message(after)
+
+    async def send_log(self, message, score):
         channel = [c for c in message.guild.text_channels if c.name == self.bot.config['log_channel']]
         if channel:
             channel = channel[0]
