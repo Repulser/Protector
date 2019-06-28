@@ -4,7 +4,7 @@ import utils
 description = ''
 
 bot = commands.Bot(command_prefix='-', description=description)
-
+bot.remove_command("help")
 
 @bot.event
 async def on_ready():
