@@ -12,3 +12,7 @@ class Moderate(Cog):
 
     async def on_message(self, message):
         print(ml.predict(message.content))
+
+
+def setup(bot):
+    bot.add_cog(Moderate(bot))
