@@ -11,7 +11,7 @@ class Moderate(Cog):
         self.bot = bot
 
     async def on_message(self, message):
-        print(ml.predict(message.content))
+        print(await ml.predict(message.content))
 
 
 def setup(bot):
