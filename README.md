@@ -3,6 +3,7 @@ Protector is a Discord moderation bot aimed at assisting your staff members by p
 
 #### **What does Protector do?**
 Protector automatically moderates your Discord server by deleting messages it deems harmful and warning about ones that may be potentially harmful.
+![Example](https://i.imgur.com/DdkdAi0.png)
 
 #### **How does Protector work?**
 We used machine learning and a dataset of over 10,000 messages we created of positive and negative comments in order to train a text classifier that can decide if a message is considered harmful or not.
@@ -23,4 +24,6 @@ No. Protector is meant to be used alongside staff members to aid them with the d
 - Making use of translate APIs in order to support multiple languages
 - Marking users who have previously sent harmful content
 - Allowing user input for training data
-- Furhter improvment to the data set
+- Further improvement to the data set
+- Many more helpful moderation features and automations
+- Configurability, stuff like server prefix and log channels
