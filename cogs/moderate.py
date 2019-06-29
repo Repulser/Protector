@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord.ext.commands import Cog
+
 import ml
 import utils
 
@@ -39,7 +40,7 @@ class Moderate(Cog):
         await self.handle_message(after)
 
     async def send_log(self, message, score):
-        channel = [c for c in message.guild.text_channels if c.name == self.bot.config['log_channel']]
+        channel = [c for c in message.guild.text_channels if c.name == self.bot.config['log_channel'] and c.permissions_for(message.guild.me).send_messages]
         if channel:
             channel = channel[0]
             if score > 0.8:
