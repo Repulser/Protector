@@ -1,5 +1,5 @@
 {
-  "token": "discord-token"
+  "token": "discord-token",
   "api_base": "http://127.0.0.1:5000",
   "log_channel": "protector-log"
 }
